@@ -5080,7 +5080,7 @@ static int sde_crtc_onscreenfinger_atomic_check(struct sde_crtc_state *cstate,
 		if (fp_index >= 0)
 			cstate->fingerprint_mode = true;
 		else
-			cstate->fingerprint_mode = false;
+			cstate->fingerprint_mode = true;
 
 		if ((fp_index >= 0 || dim_backlight > 0) && sde_crtc_config_fingerprint_dim_layer(&cstate->base, zpos)) {
 			SDE_ERROR("Failed to config dim layer\n");
@@ -5089,11 +5089,11 @@ static int sde_crtc_onscreenfinger_atomic_check(struct sde_crtc_state *cstate,
 		if (fppressed_index >= 0)
 			cstate->fingerprint_pressed = true;
 		else {
-			cstate->fingerprint_pressed = false;
+			cstate->fingerprint_pressed = true;
 		}
 	} else{
-	cstate->fingerprint_pressed = false;
-	cstate->fingerprint_mode = false;
+	cstate->fingerprint_pressed = true;
+	cstate->fingerprint_mode = true;
     }
 	if (fp_index < 0 && !dim_backlight) {
 		cstate->fingerprint_dim_layer = NULL;
